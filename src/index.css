@@ -2,95 +2,115 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
+/* Scrapbook DIY Discovery - Design System
+   A cozy, handmade aesthetic with paper textures and warm pastels
 */
+
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Quicksand:wght@300;400;500;600;700&display=swap');
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Core palette - warm cream & paper tones */
+    --background: 40 33% 96%;
+    --foreground: 25 30% 20%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    /* Card surfaces - paper-like warmth */
+    --card: 40 40% 98%;
+    --card-foreground: 25 30% 20%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    /* Popover */
+    --popover: 40 40% 98%;
+    --popover-foreground: 25 30% 20%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Primary - warm blush pink */
+    --primary: 350 60% 65%;
+    --primary-foreground: 40 40% 98%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Secondary - sage green */
+    --secondary: 140 25% 75%;
+    --secondary-foreground: 140 30% 25%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Muted - soft beige */
+    --muted: 35 30% 90%;
+    --muted-foreground: 25 20% 45%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Accent - warm terracotta */
+    --accent: 20 50% 70%;
+    --accent-foreground: 20 40% 20%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Destructive */
+    --destructive: 0 65% 55%;
+    --destructive-foreground: 40 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    /* UI elements */
+    --border: 35 25% 85%;
+    --input: 35 25% 88%;
+    --ring: 350 60% 65%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
-    --sidebar-background: 0 0% 98%;
+    /* Extended palette for scrapbook elements */
+    --cream: 45 40% 94%;
+    --paper: 40 35% 97%;
+    --kraft: 35 40% 75%;
+    --tape: 55 80% 85%;
+    --tape-pink: 350 50% 85%;
+    --tape-sage: 140 30% 80%;
+    --doodle: 25 30% 35%;
+    --highlight: 50 90% 85%;
 
-    --sidebar-foreground: 240 5.3% 26.1%;
+    /* Shadows & textures */
+    --shadow-soft: 0 4px 20px -4px hsl(25 30% 20% / 0.08);
+    --shadow-lifted: 0 8px 30px -8px hsl(25 30% 20% / 0.12);
+    --shadow-card: 2px 3px 8px -2px hsl(25 30% 20% / 0.1);
 
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Sidebar */
+    --sidebar-background: 40 35% 95%;
+    --sidebar-foreground: 25 30% 25%;
+    --sidebar-primary: 350 60% 65%;
+    --sidebar-primary-foreground: 40 40% 98%;
+    --sidebar-accent: 140 25% 85%;
+    --sidebar-accent-foreground: 140 30% 25%;
+    --sidebar-border: 35 25% 85%;
+    --sidebar-ring: 350 60% 65%;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --background: 25 25% 12%;
+    --foreground: 40 30% 92%;
+    --card: 25 22% 16%;
+    --card-foreground: 40 30% 92%;
+    --popover: 25 22% 16%;
+    --popover-foreground: 40 30% 92%;
+    --primary: 350 55% 60%;
+    --primary-foreground: 25 25% 12%;
+    --secondary: 140 20% 35%;
+    --secondary-foreground: 140 30% 90%;
+    --muted: 25 20% 22%;
+    --muted-foreground: 35 20% 65%;
+    --accent: 20 45% 50%;
+    --accent-foreground: 40 30% 92%;
+    --destructive: 0 55% 45%;
+    --destructive-foreground: 40 30% 92%;
+    --border: 25 20% 25%;
+    --input: 25 20% 25%;
+    --ring: 350 55% 60%;
+    --cream: 25 20% 18%;
+    --paper: 25 22% 20%;
+    --kraft: 30 25% 40%;
+    --tape: 50 40% 45%;
+    --tape-pink: 350 35% 45%;
+    --tape-sage: 140 20% 40%;
+    --doodle: 35 20% 70%;
+    --highlight: 45 50% 35%;
+    --sidebar-background: 25 22% 14%;
+    --sidebar-foreground: 40 30% 90%;
+    --sidebar-primary: 350 55% 60%;
+    --sidebar-primary-foreground: 25 25% 12%;
+    --sidebar-accent: 140 20% 30%;
+    --sidebar-accent-foreground: 140 30% 90%;
+    --sidebar-border: 25 20% 25%;
+    --sidebar-ring: 350 55% 60%;
   }
 }
 
@@ -100,6 +120,168 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-body antialiased;
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
   }
 }
+
+@layer utilities {
+  /* Paper texture overlay */
+  .paper-texture {
+    position: relative;
+  }
+  
+  .paper-texture::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.04' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paper)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    border-radius: inherit;
+  }
+
+  /* Torn edge effect */
+  .torn-edge {
+    mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,0 L100,0 L100,95 Q95,97 90,95 Q85,93 80,96 Q75,99 70,97 Q65,95 60,98 Q55,100 50,97 Q45,94 40,97 Q35,100 30,96 Q25,93 20,96 Q15,99 10,96 Q5,93 0,96 Z' fill='white'/%3E%3C/svg%3E");
+    mask-size: 100% 100%;
+  }
+
+  .torn-edge-top {
+    mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,5 Q5,3 10,6 Q15,9 20,6 Q25,3 30,6 Q35,9 40,6 Q45,3 50,6 Q55,9 60,5 Q65,2 70,5 Q75,8 80,5 Q85,2 90,5 Q95,8 100,5 L100,100 L0,100 Z' fill='white'/%3E%3C/svg%3E");
+    mask-size: 100% 100%;
+  }
+
+  /* Washi tape effects */
+  .washi-tape {
+    @apply relative;
+  }
+  
+  .washi-tape::after {
+    content: '';
+    @apply absolute -top-3 left-1/2 -translate-x-1/2 w-16 h-6 rounded-sm opacity-80;
+    background: hsl(var(--tape));
+    transform: translateX(-50%) rotate(-2deg);
+  }
+
+  .washi-tape-pink::after {
+    background: hsl(var(--tape-pink));
+    transform: translateX(-50%) rotate(1deg);
+  }
+
+  .washi-tape-sage::after {
+    background: hsl(var(--tape-sage));
+    transform: translateX(-50%) rotate(-1deg);
+  }
+
+  /* Card hover lift */
+  .hover-lift {
+    @apply transition-all duration-300 ease-out;
+  }
+  
+  .hover-lift:hover {
+    @apply -translate-y-2;
+    box-shadow: var(--shadow-lifted);
+  }
+
+  /* Doodle underline */
+  .doodle-underline {
+    @apply relative inline-block;
+  }
+  
+  .doodle-underline::after {
+    content: '';
+    @apply absolute -bottom-1 left-0 w-full h-2;
+    background: url("data:image/svg+xml,%3Csvg width='100' height='8' viewBox='0 0 100 8' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,6 Q10,2 20,5 T40,4 T60,6 T80,3 T100,5' stroke='%23e8b4bc' stroke-width='2' fill='none'/%3E%3C/svg%3E") repeat-x;
+    background-size: 100px 8px;
+  }
+
+  /* Highlight marker effect */
+  .highlight-marker {
+    background: linear-gradient(180deg, transparent 50%, hsl(var(--highlight)) 50%);
+    padding: 0 0.25em;
+  }
+
+  /* Scrapbook shadow */
+  .scrapbook-shadow {
+    box-shadow: var(--shadow-card);
+  }
+
+  /* Handwritten style */
+  .handwritten {
+    @apply font-display;
+    letter-spacing: 0.02em;
+  }
+
+  /* Rotate variations for natural look */
+  .rotate-slight-left {
+    transform: rotate(-1.5deg);
+  }
+  
+  .rotate-slight-right {
+    transform: rotate(1.5deg);
+  }
+
+  .rotate-tilt-left {
+    transform: rotate(-3deg);
+  }
+  
+  .rotate-tilt-right {
+    transform: rotate(3deg);
+  }
+}
+
+/* Custom animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-1deg); }
+  50% { transform: rotate(1deg); }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scale-bounce {
+  0% { transform: scale(0.9); opacity: 0; }
+  70% { transform: scale(1.02); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-wiggle {
+  animation: wiggle 3s ease-in-out infinite;
+}
+
+.animate-fade-up {
+  animation: fade-up 0.5s ease-out forwards;
+}
+
+.animate-scale-bounce {
+  animation: scale-bounce 0.4s ease-out forwards;
+}
+
+/* Stagger delays for card animations */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+.stagger-5 { animation-delay: 0.5s; }
+.stagger-6 { animation-delay: 0.6s; }
