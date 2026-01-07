@@ -13,6 +13,10 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        display: ['Caveat', 'cursive'],
+        body: ['Quicksand', 'sans-serif'],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -57,28 +61,34 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        // Scrapbook extended colors
+        cream: "hsl(var(--cream))",
+        paper: "hsl(var(--paper))",
+        kraft: "hsl(var(--kraft))",
+        tape: "hsl(var(--tape))",
+        "tape-pink": "hsl(var(--tape-pink))",
+        "tape-sage": "hsl(var(--tape-sage))",
+        doodle: "hsl(var(--doodle))",
+        highlight: "hsl(var(--highlight))",
       },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      boxShadow: {
+        soft: "var(--shadow-soft)",
+        lifted: "var(--shadow-lifted)",
+        card: "var(--shadow-card)",
+      },
       keyframes: {
         "accordion-down": {
-          from: {
-            height: "0",
-          },
-          to: {
-            height: "var(--radix-accordion-content-height)",
-          },
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
-          from: {
-            height: "var(--radix-accordion-content-height)",
-          },
-          to: {
-            height: "0",
-          },
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
         },
       },
       animation: {
