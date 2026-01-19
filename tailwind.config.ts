@@ -71,6 +71,16 @@ export default {
         "tape-sage": "hsl(var(--tape-sage))",
         doodle: "hsl(var(--doodle))",
         highlight: "hsl(var(--highlight))",
+        // Pop art pastel colors
+        "pastel-purple": "hsl(var(--pastel-purple))",
+        "pastel-yellow": "hsl(var(--pastel-yellow))",
+        "pastel-mint": "hsl(var(--pastel-mint))",
+        "pastel-coral": "hsl(var(--pastel-coral))",
+        "neon-pink": "hsl(var(--primary))",
+        "neon-cyan": "hsl(var(--secondary))",
+        "neon-lime": "hsl(var(--accent))",
+        "sunset": "hsl(var(--destructive))",
+        "doodle-stroke": "hsl(var(--doodle-stroke))",
       },
       borderRadius: {
         lg: "var(--radius)",
