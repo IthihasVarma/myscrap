@@ -9,15 +9,15 @@ interface VideoCardProps {
 }
 
 const difficultyColors = {
-  Beginner: 'bg-secondary text-secondary-foreground',
-  Intermediate: 'bg-tape text-foreground',
-  Advanced: 'bg-accent text-accent-foreground',
+  Beginner: 'bg-gradient-to-r from-pastel-mint to-secondary text-background font-black',
+  Intermediate: 'bg-gradient-to-r from-pastel-yellow to-primary text-background font-black',
+  Advanced: 'bg-gradient-to-r from-accent to-neon-lime text-background font-black',
 };
 
 const matchTypeColors = {
-  exact: 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200',
-  partial: 'bg-amber-100 text-amber-800 dark:bg-amber-900 dark:text-amber-200',
-  suggested: 'bg-slate-100 text-slate-800 dark:bg-slate-800 dark:text-slate-200',
+  exact: 'bg-gradient-to-r from-primary to-secondary text-background font-black border-2 border-doodle-stroke',
+  partial: 'bg-gradient-to-r from-pastel-yellow to-sunset text-background font-black border-2 border-doodle-stroke',
+  suggested: 'bg-gradient-to-r from-pastel-purple to-pastel-mint text-background font-black border-2 border-doodle-stroke',
 };
 
 const matchTypeLabels = {
@@ -30,32 +30,38 @@ export function VideoCard({ result, index }: VideoCardProps) {
   const { video, matchedItems, suggestedItems, matchPercentage, matchType, relevanceScore } = result;
   const difficulty = estimateDifficulty(video);
 
-  // Rotation variations for scrapbook feel
-  const rotations = ['rotate-slight-left', '', 'rotate-slight-right', ''];
+  // Rotation variations for pop art feel
+  const rotations = ['-rotate-2', 'rotate-1', '-rotate-1', 'rotate-2'];
   const rotation = rotations[index % rotations.length];
 
-  // Washi tape color variations
-  const tapeColors = ['bg-tape-pink/70', 'bg-tape-sage/70', 'bg-tape/70', 'bg-accent/50'];
-  const tapeColor = tapeColors[index % tapeColors.length];
+  // Neon sticker color variations
+  const stickerColors = [
+    'bg-gradient-to-br from-primary to-secondary',
+    'bg-gradient-to-br from-accent to-neon-lime',
+    'bg-gradient-to-br from-pastel-yellow to-sunset',
+    'bg-gradient-to-br from-pastel-purple to-pastel-mint',
+  ];
+  const stickerBg = stickerColors[index % stickerColors.length];
 
   return (
     <div className={`relative group opacity-0 animate-scale-bounce stagger-${(index % 6) + 1}`}>
-      {/* Washi tape decoration */}
+      {/* Pop sticker decoration - rotated label */}
       <div
-        className={`absolute -top-3 left-1/2 -translate-x-1/2 w-16 h-5 ${tapeColor} rounded-sm ${rotation} z-20`}
-      />
+        className={`absolute -top-5 -right-4 z-20 ${stickerBg} text-background px-4 py-2 rounded-full font-black text-xs transform ${rotation} shadow-lg border-3 border-doodle-stroke`}
+      >
+        {matchType === 'exact' && '⭐ PERFECT'}
+        {matchType === 'partial' && '💫 CLOSE'}
+        {matchType === 'suggested' && '✨ TRY IT'}
+      </div>
 
-      {/* Card shadow/depth */}
-      <div className={`absolute inset-0 bg-kraft/20 rounded-xl translate-x-1 translate-y-1`} />
-
-      {/* Main card */}
+      {/* Main card with sketchy border */}
       <div
-        className={`relative bg-card rounded-xl overflow-hidden shadow-card hover:shadow-lifted transition-all duration-300 hover:-translate-y-1 paper-texture ${rotation}`}
+        className={`sketchy-border relative bg-gradient-to-br from-background to-background/90 rounded-2xl overflow-hidden shadow-lifted hover:shadow-lg transition-all duration-300 hover:-translate-y-2 border-4 border-foreground ${rotation} transform`}
       >
         {/* Match badge */}
-        <div className="absolute top-4 right-4 z-10">
-          <Badge className={`${matchTypeColors[matchType]} font-semibold px-3 py-1 shadow-soft`}>
-            {matchTypeLabels[matchType]}
+        <div className="absolute top-4 left-4 z-10">
+          <Badge className={`${matchTypeColors[matchType]} px-4 py-2 rounded-full text-sm`}>
+            {matchPercentage}% Match
           </Badge>
         </div>
 
@@ -77,16 +83,16 @@ export function VideoCard({ result, index }: VideoCardProps) {
             </div>
           </div>
 
-          {/* Match percentage indicator */}
-          <div className="absolute bottom-3 left-3">
-            <div className="flex items-center gap-1 px-2 py-1 bg-background/90 backdrop-blur-sm rounded-full text-xs font-medium">
-              <div className="w-10 h-2 bg-muted rounded-full overflow-hidden">
+          {/* Match percentage indicator - neon glow */}
+          <div className="absolute bottom-3 right-3">
+            <div className="flex items-center gap-2 px-3 py-2 bg-gradient-to-r from-primary to-secondary text-background rounded-full text-xs font-black border-2 border-doodle-stroke shadow-lg">
+              <div className="w-12 h-3 bg-background rounded-full overflow-hidden border-2 border-background">
                 <div
-                  className="h-full bg-primary rounded-full transition-all duration-500"
+                  className="h-full bg-gradient-to-r from-accent to-neon-lime rounded-full transition-all duration-500 shadow-lg"
                   style={{ width: `${matchPercentage}%` }}
                 />
               </div>
-              <span className="text-muted-foreground ml-1">{matchPercentage}%</span>
+              <span className="text-white">{matchPercentage}%</span>
             </div>
           </div>
 
@@ -97,41 +103,41 @@ export function VideoCard({ result, index }: VideoCardProps) {
         </div>
 
         {/* Content */}
-        <div className="p-5">
+        <div className="p-6">
           {/* Title */}
-          <h3 className="text-lg font-display text-foreground leading-tight mb-2 line-clamp-2 hover:text-primary transition-colors">
+          <h3 className="text-xl font-display text-foreground leading-tight mb-3 line-clamp-2 hover:neon-glow transition-all">
             {video.title}
           </h3>
 
           {/* Description preview */}
-          <p className="text-xs text-muted-foreground mb-3 line-clamp-2">
+          <p className="text-sm text-foreground/70 mb-4 line-clamp-2 font-body">
             {video.description || 'DIY craft video tutorial'}
           </p>
 
-          {/* Badges row */}
-          <div className="flex flex-wrap gap-2 mb-4">
-            <Badge className={`${difficultyColors[difficulty]} text-xs font-medium`}>
+          {/* Badges row - pop stickers */}
+          <div className="flex flex-wrap gap-3 mb-5">
+            <Badge className={`${difficultyColors[difficulty]} px-3 py-1 rounded-full text-sm`}>
               {difficulty}
             </Badge>
             {video.duration && (
-              <Badge variant="outline" className="text-xs font-medium flex items-center gap-1">
-                <Clock className="w-3 h-3" />
+              <Badge className="bg-gradient-to-r from-pastel-purple to-pastel-coral text-background font-black px-3 py-1 rounded-full text-sm border-2 border-doodle-stroke">
+                <Clock className="w-3 h-3 mr-1" />
                 {video.duration}
               </Badge>
             )}
           </div>
 
-          {/* Matched materials */}
+          {/* Matched materials - green neon */}
           {matchedItems.length > 0 && (
-            <div className="mb-3">
-              <p className="text-xs font-semibold text-secondary-foreground mb-1">
-                ✓ You have:
+            <div className="mb-4 p-3 bg-gradient-to-r from-pastel-mint/30 to-secondary/20 border-2 border-doodle-stroke rounded-lg">
+              <p className="text-xs font-black text-foreground mb-2">
+                ✅ YOU HAVE:
               </p>
-              <div className="flex flex-wrap gap-1">
+              <div className="flex flex-wrap gap-2">
                 {matchedItems.map((item, i) => (
                   <span
                     key={i}
-                    className="px-2 py-1 bg-secondary/30 text-secondary-foreground text-xs rounded font-medium"
+                    className="px-3 py-1 bg-pastel-mint text-doodle-stroke text-xs font-bold rounded-full border border-doodle-stroke"
                   >
                     {item}
                   </span>
@@ -140,46 +146,46 @@ export function VideoCard({ result, index }: VideoCardProps) {
             </div>
           )}
 
-          {/* Suggested materials */}
+          {/* Suggested materials - pastel colors */}
           {suggestedItems.length > 0 && (
-            <div className="mb-3">
-              <p className="text-xs font-semibold text-muted-foreground mb-1">
-                + You could get:
+            <div className="mb-4 p-3 bg-gradient-to-r from-pastel-yellow/20 to-pastel-coral/20 border-2 border-doodle-stroke rounded-lg">
+              <p className="text-xs font-black text-foreground mb-2">
+                💡 ADD THESE:
               </p>
-              <div className="flex flex-wrap gap-1">
+              <div className="flex flex-wrap gap-2">
                 {suggestedItems.slice(0, 3).map((item, i) => (
                   <span
                     key={i}
-                    className="px-2 py-1 bg-muted/50 text-muted-foreground text-xs rounded"
+                    className="px-3 py-1 bg-pastel-coral text-doodle-stroke text-xs font-bold rounded-full border border-doodle-stroke"
                   >
                     {item}
                   </span>
                 ))}
                 {suggestedItems.length > 3 && (
-                  <span className="px-2 py-1 text-xs text-muted-foreground">
-                    +{suggestedItems.length - 3} more
+                  <span className="px-3 py-1 text-xs text-foreground font-black">
+                    +{suggestedItems.length - 3} more ✨
                   </span>
                 )}
               </div>
             </div>
           )}
 
-          {/* Source info */}
-          <div className="flex items-center justify-between pt-3 border-t border-border">
-            <span className="text-xs text-muted-foreground">
-              {video.source === 'youtube' && '▶ YouTube'}
-              {video.source === 'dailymotion' && '● Dailymotion'}
-              {video.source === 'vimeo' && '▶ Vimeo'}
+          {/* Source info & CTA */}
+          <div className="flex items-center justify-between pt-4 border-t-3 border-doodle-stroke">
+            <span className="text-xs font-bold text-foreground">
+              {video.source === 'youtube' && '▶ YOUTUBE'}
+              {video.source === 'dailymotion' && '● DAILYMOTION'}
+              {video.source === 'vimeo' && '▶ VIMEO'}
             </span>
             <Button
               variant="ghost"
               size="sm"
-              className="text-primary hover:text-primary hover:bg-primary/10 h-8 px-2"
+              className="bg-gradient-to-r from-primary to-secondary text-background hover:text-background hover:shadow-lg font-black px-4 py-2 rounded-full border-2 border-doodle-stroke h-auto transform hover:scale-110 transition-all"
               asChild
             >
               <a href={video.url} target="_blank" rel="noopener noreferrer">
                 Watch
-                <ExternalLink className="w-3 h-3 ml-1" />
+                <ExternalLink className="w-4 h-4 ml-2" />
               </a>
             </Button>
           </div>

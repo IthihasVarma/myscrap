@@ -2,102 +2,120 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Scrapbook DIY Discovery - Design System
-   A cozy, handmade aesthetic with paper textures and warm pastels
+/* Craftify 2016 LA Pop Doodle Aesthetic
+   Neon pastels, bold Memphis design, sketchy doodles, energetic vibes
 */
 
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Quicksand:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@700&family=Permanent+Marker&display=swap');
 
 @layer base {
   :root {
-    /* Core palette - warm cream & paper tones */
-    --background: 40 33% 96%;
-    --foreground: 25 30% 20%;
+    /* Background - Light LA vibes */
+    --background: 60 100% 97%;
+    --foreground: 0 0% 5%;
 
-    /* Card surfaces - paper-like warmth */
-    --card: 40 40% 98%;
-    --card-foreground: 25 30% 20%;
+    /* Card surfaces - Bright and pop */
+    --card: 60 100% 99%;
+    --card-foreground: 0 0% 5%;
 
     /* Popover */
-    --popover: 40 40% 98%;
-    --popover-foreground: 25 30% 20%;
+    --popover: 60 100% 99%;
+    --popover-foreground: 0 0% 5%;
 
-    /* Primary - warm blush pink */
-    --primary: 350 60% 65%;
-    --primary-foreground: 40 40% 98%;
+    /* Primary - Hot neon pink */
+    --primary: 330 100% 55%;
+    --primary-foreground: 60 100% 99%;
 
-    /* Secondary - sage green */
-    --secondary: 140 25% 75%;
-    --secondary-foreground: 140 30% 25%;
+    /* Secondary - Electric cyan */
+    --secondary: 180 100% 50%;
+    --secondary-foreground: 60 100% 99%;
 
-    /* Muted - soft beige */
-    --muted: 35 30% 90%;
-    --muted-foreground: 25 20% 45%;
+    /* Muted - Pastel purple */
+    --muted: 280 70% 85%;
+    --muted-foreground: 280 20% 30%;
 
-    /* Accent - warm terracotta */
-    --accent: 20 50% 70%;
-    --accent-foreground: 20 40% 20%;
+    /* Accent - Neon lime */
+    --accent: 90 100% 50%;
+    --accent-foreground: 0 0% 0%;
 
-    /* Destructive */
-    --destructive: 0 65% 55%;
-    --destructive-foreground: 40 40% 98%;
+    /* Destructive - Sunset orange */
+    --destructive: 30 100% 55%;
+    --destructive-foreground: 60 100% 99%;
 
     /* UI elements */
-    --border: 35 25% 85%;
-    --input: 35 25% 88%;
-    --ring: 350 60% 65%;
+    --border: 0 0% 85%;
+    --input: 0 0% 92%;
+    --ring: 330 100% 55%;
 
-    --radius: 0.75rem;
+    --radius: 1.5rem;
 
-    /* Extended palette for scrapbook elements */
-    --cream: 45 40% 94%;
-    --paper: 40 35% 97%;
-    --kraft: 35 40% 75%;
-    --tape: 55 80% 85%;
-    --tape-pink: 350 50% 85%;
-    --tape-sage: 140 30% 80%;
-    --doodle: 25 30% 35%;
-    --highlight: 50 90% 85%;
+    /* 2016 LA Pop Palette */
+    --neon-pink: 330 100% 55%;
+    --neon-cyan: 180 100% 50%;
+    --neon-lime: 90 100% 50%;
+    --sunset: 30 100% 55%;
+    --pastel-purple: 280 70% 85%;
+    --pastel-yellow: 50 100% 75%;
+    --pastel-mint: 150 70% 80%;
+    --pastel-coral: 10 100% 70%;
+    --doodle-stroke: 0 0% 10%;
+    --memphis-bg: 60 100% 98%;
 
-    /* Shadows & textures */
-    --shadow-soft: 0 4px 20px -4px hsl(25 30% 20% / 0.08);
-    --shadow-lifted: 0 8px 30px -8px hsl(25 30% 20% / 0.12);
-    --shadow-card: 2px 3px 8px -2px hsl(25 30% 20% / 0.1);
+    /* Shadows - Soft pop vibes */
+    --shadow-soft: 0 4px 15px rgba(255, 20, 147, 0.15);
+    --shadow-lifted: 0 8px 25px rgba(0, 255, 255, 0.1);
+    --shadow-card: 3px 3px 0px rgba(0, 0, 0, 0.15);
 
     /* Sidebar */
-    --sidebar-background: 40 35% 95%;
-    --sidebar-foreground: 25 30% 25%;
-    --sidebar-primary: 350 60% 65%;
-    --sidebar-primary-foreground: 40 40% 98%;
-    --sidebar-accent: 140 25% 85%;
-    --sidebar-accent-foreground: 140 30% 25%;
-    --sidebar-border: 35 25% 85%;
-    --sidebar-ring: 350 60% 65%;
+    --sidebar-background: 60 100% 98%;
+    --sidebar-foreground: 0 0% 5%;
+    --sidebar-primary: 330 100% 55%;
+    --sidebar-primary-foreground: 60 100% 99%;
+    --sidebar-accent: 180 100% 50%;
+    --sidebar-accent-foreground: 60 100% 99%;
+    --sidebar-border: 0 0% 85%;
+    --sidebar-ring: 330 100% 55%;
   }
 
   .dark {
-    --background: 25 25% 12%;
-    --foreground: 40 30% 92%;
-    --card: 25 22% 16%;
-    --card-foreground: 40 30% 92%;
-    --popover: 25 22% 16%;
-    --popover-foreground: 40 30% 92%;
-    --primary: 350 55% 60%;
-    --primary-foreground: 25 25% 12%;
-    --secondary: 140 20% 35%;
-    --secondary-foreground: 140 30% 90%;
-    --muted: 25 20% 22%;
-    --muted-foreground: 35 20% 65%;
-    --accent: 20 45% 50%;
-    --accent-foreground: 40 30% 92%;
-    --destructive: 0 55% 45%;
-    --destructive-foreground: 40 30% 92%;
-    --border: 25 20% 25%;
-    --input: 25 20% 25%;
-    --ring: 350 55% 60%;
-    --cream: 25 20% 18%;
-    --paper: 25 22% 20%;
-    --kraft: 30 25% 40%;
+    --background: 260 30% 10%;
+    --foreground: 60 100% 98%;
+    --card: 260 25% 15%;
+    --card-foreground: 60 100% 98%;
+    --popover: 260 25% 15%;
+    --popover-foreground: 60 100% 98%;
+    --primary: 330 100% 60%;
+    --primary-foreground: 260 30% 10%;
+    --secondary: 180 100% 55%;
+    --secondary-foreground: 260 30% 10%;
+    --muted: 260 30% 35%;
+    --muted-foreground: 60 30% 75%;
+    --accent: 90 100% 55%;
+    --accent-foreground: 260 30% 10%;
+    --destructive: 30 100% 60%;
+    --destructive-foreground: 60 100% 98%;
+    --border: 260 30% 30%;
+    --input: 260 30% 25%;
+    --ring: 330 100% 60%;
+    --neon-pink: 330 100% 60%;
+    --neon-cyan: 180 100% 55%;
+    --neon-lime: 90 100% 55%;
+    --pastel-purple: 280 50% 60%;
+    --pastel-yellow: 50 80% 65%;
+    --pastel-mint: 150 50% 70%;
+    --pastel-coral: 10 90% 60%;
+    --doodle-stroke: 60 100% 90%;
+    --memphis-bg: 260 30% 12%;
+    --sidebar-background: 260 25% 13%;
+    --sidebar-foreground: 60 100% 98%;
+    --sidebar-primary: 330 100% 60%;
+    --sidebar-primary-foreground: 260 30% 10%;
+    --sidebar-accent: 180 100% 55%;
+    --sidebar-accent-foreground: 260 30% 10%;
+    --sidebar-border: 260 30% 25%;
+    --sidebar-ring: 330 100% 60%;
+  }
+}
     --tape: 50 40% 45%;
     --tape-pink: 350 35% 45%;
     --tape-sage: 140 20% 40%;
@@ -121,60 +139,81 @@
 
   body {
     @apply bg-background text-foreground font-body antialiased;
-    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='20' cy='20' r='1' fill='%23ff1493' opacity='0.1'/%3E%3C/svg%3E");
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-display;
+    @apply font-display font-bold;
+    letter-spacing: 0.05em;
   }
 }
 
 @layer utilities {
-  /* Paper texture overlay */
-  .paper-texture {
-    position: relative;
-  }
-  
-  .paper-texture::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.04' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paper)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events: none;
-    border-radius: inherit;
+  /* Sketchy border doodle */
+  .sketchy-border {
+    border: 3px solid hsl(var(--doodle-stroke));
+    border-radius: 1.5rem;
+    box-shadow: 4px 4px 0px rgba(255, 20, 147, 0.3);
   }
 
-  /* Torn edge effect */
-  .torn-edge {
-    mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,0 L100,0 L100,95 Q95,97 90,95 Q85,93 80,96 Q75,99 70,97 Q65,95 60,98 Q55,100 50,97 Q45,94 40,97 Q35,100 30,96 Q25,93 20,96 Q15,99 10,96 Q5,93 0,96 Z' fill='white'/%3E%3C/svg%3E");
-    mask-size: 100% 100%;
+  .sketchy-border:hover {
+    box-shadow: 6px 6px 0px rgba(0, 255, 255, 0.3);
+    transform: translate(-2px, -2px);
   }
 
-  .torn-edge-top {
-    mask-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,5 Q5,3 10,6 Q15,9 20,6 Q25,3 30,6 Q35,9 40,6 Q45,3 50,6 Q55,9 60,5 Q65,2 70,5 Q75,8 80,5 Q85,2 90,5 Q95,8 100,5 L100,100 L0,100 Z' fill='white'/%3E%3C/svg%3E");
-    mask-size: 100% 100%;
+  /* Memphis design - bold shapes */
+  .memphis-box {
+    background: linear-gradient(135deg, hsl(var(--pastel-yellow)) 0%, hsl(var(--pastel-purple)) 100%);
+    border: 4px solid hsl(var(--doodle-stroke));
+    transform: rotate(-2deg);
+    box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.2);
   }
 
-  /* Washi tape effects */
-  .washi-tape {
-    @apply relative;
-  }
-  
-  .washi-tape::after {
-    content: '';
-    @apply absolute -top-3 left-1/2 -translate-x-1/2 w-16 h-6 rounded-sm opacity-80;
-    background: hsl(var(--tape));
-    transform: translateX(-50%) rotate(-2deg);
+  /* Neon glow effect */
+  .neon-glow {
+    text-shadow: 0 0 10px hsl(var(--primary)), 0 0 20px hsl(var(--primary));
+    color: hsl(var(--primary));
   }
 
-  .washi-tape-pink::after {
-    background: hsl(var(--tape-pink));
-    transform: translateX(-50%) rotate(1deg);
+  .neon-cyan {
+    text-shadow: 0 0 10px hsl(var(--secondary)), 0 0 20px hsl(var(--secondary));
+    color: hsl(var(--secondary));
   }
 
-  .washi-tape-sage::after {
-    background: hsl(var(--tape-sage));
-    transform: translateX(-50%) rotate(-1deg);
+  .neon-lime {
+    text-shadow: 0 0 10px hsl(var(--accent)), 0 0 20px hsl(var(--accent));
+    color: hsl(var(--accent));
+  }
+
+  /* Doodle underline */
+  .doodle-underline {
+    @apply relative inline-block;
+    background: linear-gradient(180deg, transparent 60%, hsl(var(--accent)) 60%);
+    padding: 0 0.25em;
+  }
+
+  /* Pop sticker effect */
+  .pop-sticker {
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    border: 3px solid hsl(var(--doodle-stroke));
+    border-radius: 1.5rem;
+    transform: rotate(-3deg);
+    box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.2);
+    @apply font-bold text-sm px-3 py-1;
+  }
+
+  .pop-sticker:hover {
+    transform: rotate(-3deg) scale(1.1);
+  }
+
+  .pop-sticker-cyan {
+    background: hsl(var(--secondary));
+  }
+
+  .pop-sticker-lime {
+    background: hsl(var(--accent));
+    color: hsl(var(--doodle-stroke));
   }
 
   /* Card hover lift */

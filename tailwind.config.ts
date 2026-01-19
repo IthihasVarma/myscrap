@@ -14,8 +14,9 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ['Caveat', 'cursive'],
+        display: ['Fredoka One', 'sans-serif'],
         body: ['Quicksand', 'sans-serif'],
+        marker: ['Permanent Marker', 'cursive'],
       },
       colors: {
         border: "hsl(var(--border))",
