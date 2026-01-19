@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { WelcomeScreen } from '@/components/WelcomeScreen';
 import { ItemInput } from '@/components/ItemInput';
-import { ResultsScreen } from '@/components/ResultsScreen';
-import { findMatchingProjects, MatchResult } from '@/utils/matchingLogic';
+import { VideoResultsScreen } from '@/components/VideoResultsScreen';
+import { useVideoSearch } from '@/hooks/useVideoSearch';
+import { isValidUserInput } from '@/utils/matchingLogic';
 
 type AppScreen = 'welcome' | 'input' | 'results';
 
@@ -22,8 +23,8 @@ function trackSearch(itemCount: number, resultCount: number) {
 const Index = () => {
   const [screen, setScreen] = useState<AppScreen>('welcome');
   const [items, setItems] = useState<string[]>([]);
-  const [results, setResults] = useState<MatchResult[]>([]);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const videoSearch = useVideoSearch();
 
   const handleStart = () => {
     setIsTransitioning(true);
@@ -33,17 +34,28 @@ const Index = () => {
     }, 300);
   };
 
-  const handleSubmit = (userItems: string[]) => {
+  const handleSubmit = async (userItems: string[]) => {
+    // Validate input
+    if (!isValidUserInput(userItems)) {
+      alert('Please enter at least one meaningful item');
+      return;
+    }
+
     setItems(userItems);
-    const matchResults = findMatchingProjects(userItems);
-    setResults(matchResults);
-    trackSearch(userItems.length, matchResults.length);
     setIsTransitioning(true);
     setTimeout(() => {
       setScreen('results');
       setIsTransitioning(false);
     }, 300);
   };
+
+  // Trigger video search when we navigate to results screen
+  useEffect(() => {
+    if (screen === 'results' && items.length > 0 && !videoSearch.hasSearched) {
+      videoSearch.search(items);
+      trackSearch(items.length, 0); // Track will update when results come in
+    }
+  }, [screen, items, videoSearch]);
 
   const handleBackToInput = () => {
     setIsTransitioning(true);
@@ -58,7 +70,7 @@ const Index = () => {
     setTimeout(() => {
       setScreen('welcome');
       setItems([]);
-      setResults([]);
+      videoSearch.reset();
       setIsTransitioning(false);
     }, 300);
   };
@@ -68,7 +80,7 @@ const Index = () => {
     setTimeout(() => {
       setScreen('input');
       setItems([]);
-      setResults([]);
+      videoSearch.reset();
       setIsTransitioning(false);
     }, 300);
   };
@@ -82,9 +94,12 @@ const Index = () => {
         <ItemInput onBack={handleBackToWelcome} onSubmit={handleSubmit} />
       )}
       {screen === 'results' && (
-        <ResultsScreen 
-          items={items} 
-          results={results} 
+        <VideoResultsScreen
+          items={items}
+          videos={videoSearch.videos}
+          results={videoSearch.results}
+          isLoading={videoSearch.isLoading}
+          error={videoSearch.error}
           onBack={handleBackToInput}
           onStartOver={handleStartOver}
         />
